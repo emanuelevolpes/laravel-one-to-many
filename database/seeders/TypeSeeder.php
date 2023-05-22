@@ -17,6 +17,7 @@ class TypeSeeder extends Seeder
     public function run()
     {
         $types = ['Front-end', 'Back-end', 'Full-Stack'];
+        Type::truncate();
 
         foreach ($types as $type) {
             
