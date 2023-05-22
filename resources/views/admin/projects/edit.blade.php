@@ -33,6 +33,15 @@
                     <div class="alert alert-danger">{{ $message }} </div>
                 @enderror
             </div>
+            <div class="mb-3">
+                <label for="type_id" class="form-label">Type</label>
+                <select class="form-select" name="type_id" id="type_id">
+                    <option value="">Select type</option>
+                    @foreach ($types as $type)
+                        <option value="{{ old('type_id', $type->id) }}" >{{ $type->name }}</option>
+                    @endforeach
+                </select>
+            </div>
             <button type="submit" class="btn btn-primary">Edit</button>
         </form>
     </div>
