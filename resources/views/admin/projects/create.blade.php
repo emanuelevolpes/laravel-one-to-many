@@ -6,7 +6,8 @@
             @csrf
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
-                <input type="text" class="form-control" @error('title') is-invalid @enderror id="title" name="title" value="{{ old('title') }}">
+                <input type="text" class="form-control" @error('title') is-invalid @enderror id="title" name="title"
+                    value="{{ old('title') }}">
                 @error('title')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
@@ -20,17 +21,27 @@
             </div>
             <div class="mb-3">
                 <label for="development_date" class="form-label">Development date</label>
-                <input type="text" class="form-control" @error('development_date') is-invalid @enderror id="development_date" name="development_date" value="{{ old('development_date') }}">
+                <input type="text" class="form-control" @error('development_date') is-invalid @enderror
+                    id="development_date" name="development_date" value="{{ old('development_date') }}">
                 @error('development_date')
                     <div class="alert alert-danger">{{ $message }} </div>
                 @enderror
             </div>
             <div class="mb-3">
                 <label for="project_link" class="form-label">Project link</label>
-                <input type="text" class="form-control" @error('project_link') is-invalid @enderror id="project_link" name="project_link" value="{{ old('project_link') }}">
+                <input type="text" class="form-control" @error('project_link') is-invalid @enderror id="project_link"
+                    name="project_link" value="{{ old('project_link') }}">
                 @error('project_link')
                     <div class="alert alert-danger">{{ $message }} </div>
                 @enderror
+            </div>
+            <div class="mb-3">
+                <select class="form-select" aria-label="Default select example">
+                    <option value="">Select type</option>
+                    @foreach ($types as $type)
+                        <option value="{{ $type->id }}">{{ $type->name }}</option>
+                    @endforeach
+                </select>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
