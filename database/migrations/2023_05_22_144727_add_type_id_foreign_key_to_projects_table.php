@@ -18,7 +18,8 @@
 
                 $table->foreign('type_id')
                     ->references('id')
-                    ->on('types');
+                    ->on('types')
+                    ->nullOnDelete();
             });
         }
 
