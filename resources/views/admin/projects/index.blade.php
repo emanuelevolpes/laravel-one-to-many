@@ -26,6 +26,7 @@
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Title</th>
+                    <th scope="col">Type</th>
                     <th scope="col">Slug</th>
                     <th scope="col">Action</th>
                 </tr>
@@ -35,12 +36,21 @@
                     <tr>
                         <th scope="row">{{ $project->id }}</th>
                         <td>{{ $project->title }}</td>
+                        <td>
+                            @if ($project->type_id)
+                                {{ $project->type->name }}
+                            @else
+                            Edit and choose a type
+                            @endif
+                        </td>
                         <td>{{ $project->slug }}</td>
                         <td>
                             <div class="d-flex gap-2">
-                            <a href="{{ route('admin.projects.show', $project) }}"class="btn btn-sm btn-primary">Show</a>
-                            <a href="{{ route('admin.projects.edit', $project) }}" class="btn btn-sm btn-warning">Edit</a>
-                            <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal"
+                                <a
+                                    href="{{ route('admin.projects.show', $project) }}"class="btn btn-sm btn-primary">Show</a>
+                                <a href="{{ route('admin.projects.edit', $project) }}"
+                                    class="btn btn-sm btn-warning">Edit</a>
+                                <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal"
                                     data-bs-target="#delete{{ $project->id }}" onclick="event.stopPropagation()">
                                     Delete
                                 </button>
