@@ -31,6 +31,7 @@ class UpdateProjectRequest extends FormRequest
                 'string',
                 'max:255'
             ],
+            'image' => 'nullable|image',
             'description' => 'required|string',
             'development_date' => 'required',
             'project_link' => 'required|unique:projects|url',

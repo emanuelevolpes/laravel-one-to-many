@@ -7,6 +7,7 @@ use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Models\Project;
 use App\Models\Type;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 
@@ -20,7 +21,7 @@ class ProjectController extends Controller
     public function index()
     {
         $projects = Project::all();
-        
+
         return view('admin.projects.index', compact('projects'));
     }
 
@@ -32,7 +33,7 @@ class ProjectController extends Controller
     public function create()
     {
         $types = Type::all();
-        
+
         return view('admin.projects.create', compact('types'));
     }
 
@@ -48,6 +49,9 @@ class ProjectController extends Controller
         $project = new Project();
         $project->fill($data);
         $project->slug = Str::slug($data['title']);
+        if (isset($data['image'])) {
+            $project->image = Storage::put('uploads', $data['image']);
+        }
         $project->save();
 
         return redirect()->route('admin.projects.index')->with('message', 'Project create!');
@@ -90,6 +94,9 @@ class ProjectController extends Controller
         $data = $request->validated();
         $project->update($data);
         $project->slug = Str::slug($data['title']);
+        if (isset($data['image'])) {
+            $project->image = Storage::put('uploads', $data['image']);
+        }
         $project->save();
 
         return redirect()->route('admin.projects.index')->with('message', 'Project editated!');
