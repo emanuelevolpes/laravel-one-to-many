@@ -47,7 +47,7 @@
                         <td>
                             <div class="d-flex gap-2">
                                 <a
-                                    href="{{ route('admin.projects.show', $project) }}"class="btn btn-sm btn-primary">Show</a>
+                                    href="{{ route('admin.projects.show', $project) }}"class="btn btn-sm btn-success">Show</a>
                                 <a href="{{ route('admin.projects.edit', $project) }}"
                                     class="btn btn-sm btn-warning">Edit</a>
                                 <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal"
